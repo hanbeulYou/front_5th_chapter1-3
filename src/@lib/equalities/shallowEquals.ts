@@ -24,7 +24,7 @@ export function shallowEquals(objA: unknown, objB: unknown): boolean {
   }
 
   // 객체 비교
-  if (typeof objA === "object" && objA !== null && objB !== null) {
+  if (typeof objA === "object" && typeof objB === "object" && objA !== null && objB !== null) {
     return isSameObject(
       objA as Record<string, unknown>,
       objB as Record<string, unknown>
