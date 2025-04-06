@@ -1,35 +1,31 @@
-function isSameRef<T>(objA: T, objB: T): boolean {
-  return objA === objB;
-}
+export function deepEquals(a: unknown, b: unknown): boolean {
+  if (Object.is(a, b)) return true;
 
-function isSameValue<T>(objA: T, objB: T): boolean {
-  return objA === objB;
-}
-
-function isSameArray<T>(objA: T[], objB: T[]): boolean {
-  return objA.every((value, index) => deepEquals(value, objB[index]));
-}
-
-function isSameObject<T extends Record<string, unknown>>(
-  objA: T,
-  objB: T,
-): boolean {
-  return Object.keys(objA).every((key) => deepEquals(objA[key], objB[key]));
-}
-
-export function deepEquals<T>(objA: T, objB: T): boolean {
-  if (Array.isArray(objA) && Array.isArray(objB)) {
-    return isSameArray(objA, objB);
+  if (Array.isArray(a) && Array.isArray(b)) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) {
+      if (!deepEquals(a[i], b[i])) return false;
+    }
+    return true;
   }
 
-  // 객체 비교
-  if (typeof objA === "object" && typeof objB === "object" && objA !== null && objB !== null) {
-    return isSameObject(
-      objA as Record<string, unknown>,
-      objB as Record<string, unknown>,
-    );
+  if (
+    typeof a === "object" &&
+    a !== null &&
+    typeof b === "object" &&
+    b !== null
+  ) {
+    const keysA = Object.keys(a);
+    const keysB = Object.keys(b);
+    if (keysA.length !== keysB.length) return false;
+
+    for (const key of keysA) {
+      if (!Object.prototype.hasOwnProperty.call(b, key)) return false;
+      if (!deepEquals((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key])) return false;
+    }
+
+    return true;
   }
 
-  // 원시타입 참조 및 값 비교
-  return isSameRef(objA, objB) && isSameValue(objA, objB);
+  return false; // 원시값이 Object.is에서 걸리지 않은 경우
 }
