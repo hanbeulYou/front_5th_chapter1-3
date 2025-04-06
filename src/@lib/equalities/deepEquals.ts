@@ -21,7 +21,13 @@ export function deepEquals(a: unknown, b: unknown): boolean {
 
     for (const key of keysA) {
       if (!Object.prototype.hasOwnProperty.call(b, key)) return false;
-      if (!deepEquals((a as Record<string, unknown>)[key], (b as Record<string, unknown>)[key])) return false;
+      if (
+        !deepEquals(
+          (a as Record<string, unknown>)[key],
+          (b as Record<string, unknown>)[key],
+        )
+      )
+        return false;
     }
 
     return true;

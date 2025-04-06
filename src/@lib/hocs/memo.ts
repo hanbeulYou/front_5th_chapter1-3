@@ -1,4 +1,3 @@
- 
 import { shallowEquals } from "../equalities";
 import { ComponentType } from "react";
 import { useRef } from "../hooks";

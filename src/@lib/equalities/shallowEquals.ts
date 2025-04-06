@@ -18,7 +18,13 @@ export function shallowEquals(objA: unknown, objB: unknown): boolean {
   for (let i = 0; i < keysA.length; i += 1) {
     const key = keysA[i];
     if (!Object.prototype.hasOwnProperty.call(objB, key)) return false;
-    if (!Object.is((objA as Record<string, unknown>)[key], (objB as Record<string, unknown>)[key])) return false;
+    if (
+      !Object.is(
+        (objA as Record<string, unknown>)[key],
+        (objB as Record<string, unknown>)[key],
+      )
+    )
+      return false;
   }
 
   return true;

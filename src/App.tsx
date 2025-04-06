@@ -43,7 +43,7 @@ interface NotificationContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const UserContext = createContext<UserContextType | undefined>(undefined);
 const NotificationContext = createContext<NotificationContextType | undefined>(
-  undefined
+  undefined,
 );
 
 const useThemeContext = () => {
@@ -66,7 +66,7 @@ const useNotificationContext = () => {
   const context = useContext(NotificationContext);
   if (context === undefined) {
     throw new Error(
-      "useNotificationContext must be used within a NotificationProvider"
+      "useNotificationContext must be used within a NotificationProvider",
     );
   }
   return context;
@@ -130,7 +130,7 @@ export const ItemList: React.FC<{
   const filteredItems = items.filter(
     (item) =>
       item.name.toLowerCase().includes(filter.toLowerCase()) ||
-      item.category.toLowerCase().includes(filter.toLowerCase())
+      item.category.toLowerCase().includes(filter.toLowerCase()),
   );
 
   const totalPrice = filteredItems.reduce((sum, item) => sum + item.price, 0);
@@ -322,12 +322,12 @@ const App: React.FC = () => {
       };
       setNotifications((prev) => [...prev, newNotification]);
     },
-    []
+    [],
   );
 
   const removeNotification = useCallback((id: number) => {
     setNotifications((prev) =>
-      prev.filter((notification) => notification.id !== id)
+      prev.filter((notification) => notification.id !== id),
     );
   }, []);
 
@@ -336,7 +336,7 @@ const App: React.FC = () => {
       setUser({ id: 1, name: "홍길동", email });
       addNotification("성공적으로 로그인되었습니다", "success");
     },
-    [addNotification]
+    [addNotification],
   );
 
   const logout = useCallback(() => {
@@ -348,12 +348,12 @@ const App: React.FC = () => {
 
   const userContextValue = useMemo(
     () => ({ user, login, logout }),
-    [user, login, logout]
+    [user, login, logout],
   );
 
   const notificationContextValue = useMemo(
     () => ({ notifications, addNotification, removeNotification }),
-    [notifications, addNotification, removeNotification]
+    [notifications, addNotification, removeNotification],
   );
 
   return (
