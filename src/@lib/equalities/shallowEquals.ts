@@ -21,7 +21,7 @@ export function shallowEquals(objA: unknown, objB: unknown): boolean {
     if (
       !Object.is(
         (objA as Record<string, unknown>)[key],
-        (objB as Record<string, unknown>)[key],
+        (objB as Record<string, unknown>)[key]
       )
     )
       return false;

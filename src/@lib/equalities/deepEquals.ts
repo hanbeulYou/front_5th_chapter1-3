@@ -24,7 +24,7 @@ export function deepEquals(a: unknown, b: unknown): boolean {
       if (
         !deepEquals(
           (a as Record<string, unknown>)[key],
-          (b as Record<string, unknown>)[key],
+          (b as Record<string, unknown>)[key]
         )
       )
         return false;
