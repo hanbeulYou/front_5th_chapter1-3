@@ -1,5 +1,5 @@
 import { DependencyList } from "react";
-import { shallowEquals } from "../equalities";
+import { shallowEquals } from "../../equalities";
 import { useRef } from "./useRef";
 
 export function useMemo<T>(
