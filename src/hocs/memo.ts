@@ -5,7 +5,7 @@ import React from "react";
 
 export function memo<P extends object>(
   Component: ComponentType<P>,
-  _equals = shallowEquals,
+  _equals = shallowEquals
 ) {
   return function MemoizedComponent(props: P): JSX.Element {
     const prevPropsRef = useRef<P>();
