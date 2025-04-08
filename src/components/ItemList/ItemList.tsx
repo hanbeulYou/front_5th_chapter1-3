@@ -1,24 +1,28 @@
 import { memo } from "../../hocs";
-import { Item } from "../../types";
 import { renderLog } from "../../utils";
 import { ItemListHeader } from "./ItemListHeader";
 import { ItemListStats } from "./ItemListStats";
 import { ItemRow } from "./ItemRow";
 import { Input } from "../common";
 import { useItemList } from "../../hooks";
+import { useThemeState } from "../../context";
 
-export const ItemList: React.FC<{
-  items: Item[];
-  onAddItemsClick: () => void;
-}> = memo(({ items, onAddItemsClick }) => {
+export const ItemList: React.FC = memo(() => {
   renderLog("ItemList rendered");
 
-  const { filter, setFilter, filteredItems, totalPrice, averagePrice, theme } =
-    useItemList(items);
+  const theme = useThemeState();
+  const {
+    addItems,
+    filter,
+    setFilter,
+    filteredItems,
+    totalPrice,
+    averagePrice,
+  } = useItemList();
 
   return (
     <div className="mt-8">
-      <ItemListHeader onAddItemsClick={onAddItemsClick} />
+      <ItemListHeader onAddItemsClick={addItems} />
       <Input
         type="text"
         name="filter"
