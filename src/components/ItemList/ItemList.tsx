@@ -4,7 +4,7 @@ import { renderLog } from "../../utils";
 import { ItemListHeader } from "./ItemListHeader";
 import { ItemListStats } from "./ItemListStats";
 import { ItemRow } from "./ItemRow";
-import { InputField } from "../ComplexForm/InputField";
+import { Input } from "../common";
 import { useItemList } from "../../hooks";
 
 export const ItemList: React.FC<{
@@ -19,7 +19,7 @@ export const ItemList: React.FC<{
   return (
     <div className="mt-8">
       <ItemListHeader onAddItemsClick={onAddItemsClick} />
-      <InputField
+      <Input
         type="text"
         name="filter"
         placeholder="상품 검색..."

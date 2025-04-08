@@ -1,6 +1,6 @@
 import { memo } from "../../hocs";
 
-interface InputFieldProps {
+interface InputProps {
   type: string;
   name: string;
   value: string;
@@ -9,7 +9,7 @@ interface InputFieldProps {
   className?: string;
 }
 
-export const InputField: React.FC<InputFieldProps> = memo(
+export const Input: React.FC<InputProps> = memo(
   ({ type, name, value, onChange, placeholder, className }) => {
     return (
       <input

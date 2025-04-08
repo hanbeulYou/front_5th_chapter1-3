@@ -1,7 +1,7 @@
 import { memo } from "../../hocs";
 import { useFormReducer, useFormSubmit } from "../../hooks/form";
 import { renderLog } from "../../utils";
-import { InputField } from "./InputField";
+import { Input } from "../common";
 import { PreferenceCheckbox } from "./PreferenceCheckbox";
 import { INPUT_FIELDS, PREFERENCES } from "./consts";
 import { Button } from "../common";
@@ -18,7 +18,7 @@ export const ComplexForm: React.FC = memo(() => {
       <h2 className="text-2xl font-bold mb-4">복잡한 폼</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         {INPUT_FIELDS.map((field) => (
-          <InputField
+          <Input
             key={field.name}
             {...field}
             value={String(formData[field.name as keyof typeof formData])}
