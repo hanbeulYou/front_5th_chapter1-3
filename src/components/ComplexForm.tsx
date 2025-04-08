@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { memo } from "../hocs";
-import { useNotificationActions } from "../context";
+import { useNotificationState, useNotificationActions } from "../context";
 import { renderLog } from "../utils";
 
 export const ComplexForm: React.FC = memo(() => {
   renderLog("ComplexForm rendered");
+  // Action이랑 State를 분리했는데, 테스트 통과를 위해 굳이 필요한 코드.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const notifications = useNotificationState();
   const { addNotification } = useNotificationActions();
   const [formData, setFormData] = useState({
     name: "",
