@@ -3,7 +3,7 @@ import { useCallback } from "../hooks";
 import { useThemeState } from "../context";
 import { ItemList, ComplexForm, NotificationSystem } from "../components";
 import { generateItems } from "../utils";
-import { Header } from "../components/Header";
+import { Header } from "../components";
 
 const HomePage: React.FC = () => {
   const theme = useThemeState();
