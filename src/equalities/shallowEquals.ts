@@ -1,31 +1,24 @@
-export function shallowEquals(objA: unknown, objB: unknown): boolean {
-  if (Object.is(objA, objB)) return true;
+import { isObject } from "./isObject";
 
-  if (
-    typeof objA !== "object" ||
-    objA === null ||
-    typeof objB !== "object" ||
-    objB === null
-  ) {
-    return false;
-  }
+function haveSameKeys(a: object, b: object): boolean {
+  const keysA = Object.keys(a);
+  const keysB = Object.keys(b);
+  return keysA.length === keysB.length;
+}
 
-  const keysA = Object.keys(objA);
-  const keysB = Object.keys(objB);
+function areShallowValuesEqual(
+  a: Record<string, unknown>,
+  b: Record<string, unknown>
+): boolean {
+  return Object.keys(a).every((key) => key in b && Object.is(a[key], b[key]));
+}
 
-  if (keysA.length !== keysB.length) return false;
+export function shallowEquals(a: unknown, b: unknown): boolean {
+  if (Object.is(a, b)) return true;
 
-  for (let i = 0; i < keysA.length; i += 1) {
-    const key = keysA[i];
-    if (!Object.prototype.hasOwnProperty.call(objB, key)) return false;
-    if (
-      !Object.is(
-        (objA as Record<string, unknown>)[key],
-        (objB as Record<string, unknown>)[key]
-      )
-    )
-      return false;
-  }
+  if (!isObject(a) || !isObject(b)) return false;
 
-  return true;
+  if (!haveSameKeys(a, b)) return false;
+
+  return areShallowValuesEqual(a, b);
 }
