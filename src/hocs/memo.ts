@@ -8,8 +8,8 @@ export function memo<P extends object>(
   _equals = shallowEquals
 ) {
   return function MemoizedComponent(props: P): JSX.Element {
-    const prevPropsRef = useRef<P>();
-    const prevResultRef = useRef<JSX.Element>();
+    const prevPropsRef = useRef<P>(null);
+    const prevResultRef = useRef<JSX.Element>(null);
 
     if (
       prevPropsRef.current !== undefined &&

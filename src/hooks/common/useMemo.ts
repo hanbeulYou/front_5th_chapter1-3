@@ -7,8 +7,8 @@ export function useMemo<T>(
   _deps: DependencyList,
   _equals = shallowEquals
 ): T {
-  const valueRef = useRef<T | undefined>(undefined);
-  const depsRef = useRef<DependencyList | undefined>(undefined);
+  const valueRef = useRef<T>(null);
+  const depsRef = useRef<DependencyList>(null);
 
   if (!depsRef.current || !_equals(_deps, depsRef.current)) {
     valueRef.current = factory();
