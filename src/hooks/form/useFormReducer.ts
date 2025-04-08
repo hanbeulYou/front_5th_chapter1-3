@@ -16,12 +16,9 @@ export function useFormReducer() {
     dispatch({ type: "TOGGLE_PREFERENCE", preference });
   };
 
-  const resetForm = () => dispatch({ type: "RESET" });
-
   return {
     formData,
     handleInputChange,
     handlePreferenceChange,
-    resetForm,
   };
 }

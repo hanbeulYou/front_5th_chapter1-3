@@ -7,8 +7,7 @@ export interface FormState {
 
 type Action =
   | { type: "UPDATE_FIELD"; name: string; value: string | number }
-  | { type: "TOGGLE_PREFERENCE"; preference: string }
-  | { type: "RESET" };
+  | { type: "TOGGLE_PREFERENCE"; preference: string };
 
 export const initialFormState: FormState = {
   name: "",
