@@ -3,6 +3,7 @@ import { memo } from "../hocs";
 import { useThemeState } from "../context";
 import { Item } from "../types";
 import { renderLog } from "../utils";
+import { Button } from "./common";
 
 export const ItemList: React.FC<{
   items: Item[];
@@ -27,13 +28,9 @@ export const ItemList: React.FC<{
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">상품 목록</h2>
         <div>
-          <button
-            type="button"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs"
-            onClick={onAddItemsClick}
-          >
+          <Button onClick={onAddItemsClick} className="text-xs">
             대량추가
-          </button>
+          </Button>
         </div>
       </div>
       <input
