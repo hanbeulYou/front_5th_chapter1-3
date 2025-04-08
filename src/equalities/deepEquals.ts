@@ -1,37 +1,31 @@
+import { isObject } from "./isObject";
+
+function areArraysEqual(a: unknown[], b: unknown[]): boolean {
+  if (a.length !== b.length) return false;
+  return a.every((item, index) => deepEquals(item, b[index]));
+}
+
+function areObjectsEqual(
+  a: Record<string, unknown>,
+  b: Record<string, unknown>
+): boolean {
+  const keysA = Object.keys(a);
+  const keysB = Object.keys(b);
+  if (keysA.length !== keysB.length) return false;
+
+  return keysA.every((key) => key in b && deepEquals(a[key], b[key]));
+}
+
 export function deepEquals(a: unknown, b: unknown): boolean {
   if (Object.is(a, b)) return true;
 
   if (Array.isArray(a) && Array.isArray(b)) {
-    if (a.length !== b.length) return false;
-    for (let i = 0; i < a.length; i++) {
-      if (!deepEquals(a[i], b[i])) return false;
-    }
-    return true;
+    return areArraysEqual(a, b);
   }
 
-  if (
-    typeof a === "object" &&
-    a !== null &&
-    typeof b === "object" &&
-    b !== null
-  ) {
-    const keysA = Object.keys(a);
-    const keysB = Object.keys(b);
-    if (keysA.length !== keysB.length) return false;
-
-    for (const key of keysA) {
-      if (!Object.prototype.hasOwnProperty.call(b, key)) return false;
-      if (
-        !deepEquals(
-          (a as Record<string, unknown>)[key],
-          (b as Record<string, unknown>)[key]
-        )
-      )
-        return false;
-    }
-
-    return true;
+  if (isObject(a) && isObject(b)) {
+    return areObjectsEqual(a, b);
   }
 
-  return false; // 원시값이 Object.is에서 걸리지 않은 경우
+  return false;
 }

@@ -1,4 +1,5 @@
-import { ReactNode, useState, useCallback } from "react";
+import { ReactNode, useState } from "react";
+import { useCallback } from "../../hooks";
 import { ThemeStateContext } from "./ThemeStateContext";
 import { ThemeActionContext } from "./ThemeActionContext";
 

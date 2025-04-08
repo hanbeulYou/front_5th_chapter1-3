@@ -8,10 +8,9 @@ export function memo<P extends object>(
   _equals = shallowEquals
 ) {
   return function MemoizedComponent(props: P): JSX.Element {
-    const prevPropsRef = useRef<P>();
-    const prevResultRef = useRef<JSX.Element>();
+    const prevPropsRef = useRef<P>(null);
+    const prevResultRef = useRef<JSX.Element>(null);
 
-    // 이전 props와 현재 props 비교
     if (
       prevPropsRef.current !== undefined &&
       _equals(prevPropsRef.current, props)
@@ -19,7 +18,6 @@ export function memo<P extends object>(
       return prevResultRef.current!;
     }
 
-    // 렌더링 및 값 저장
     const result = React.createElement(Component, props);
     prevPropsRef.current = props;
     prevResultRef.current = result;
