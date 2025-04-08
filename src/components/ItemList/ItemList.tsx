@@ -33,8 +33,8 @@ export const ItemList: React.FC<{
         averagePrice={averagePrice}
       />
       <ul className="space-y-2">
-        {filteredItems.map((item, index) => (
-          <ItemRow key={index} item={item} theme={theme} />
+        {filteredItems.map((item) => (
+          <ItemRow key={item.id} item={item} theme={theme} />
         ))}
       </ul>
     </div>
