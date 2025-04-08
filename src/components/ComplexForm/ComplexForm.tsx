@@ -1,5 +1,5 @@
 import { memo } from "../../hocs";
-import { useFormState, useFormHandler, useFormSubmit } from "../../hooks/form";
+import { useFormReducer, useFormSubmit } from "../../hooks/form";
 import { renderLog } from "../../utils";
 import { InputField } from "./InputField";
 import { PreferenceCheckbox } from "./PreferenceCheckbox";
@@ -9,9 +9,8 @@ import { Button } from "../common";
 export const ComplexForm: React.FC = memo(() => {
   renderLog("ComplexForm rendered");
 
-  const { formData, setFormData } = useFormState();
-  const { handleInputChange, handlePreferenceChange } =
-    useFormHandler(setFormData);
+  const { formData, handleInputChange, handlePreferenceChange } =
+    useFormReducer();
   const { handleSubmit } = useFormSubmit();
 
   return (
