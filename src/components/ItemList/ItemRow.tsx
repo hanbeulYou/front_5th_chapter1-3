@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo } from "../../hocs";
 import { Item } from "../../types";
 
 interface ItemRowProps {

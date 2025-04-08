@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo } from "../../hocs";
 
 interface ItemListStatsProps {
   count: number;
