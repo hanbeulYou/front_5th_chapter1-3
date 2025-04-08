@@ -1,15 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  deepEquals,
-  deepMemo,
-  memo,
-  shallowEquals,
-  useCallback,
-  useDeepMemo,
-  useMemo,
-  useRef,
-} from "../@lib";
+import { useCallback, useDeepMemo, useMemo, useRef } from "../hooks";
+import { deepEquals, shallowEquals } from "../equalities";
+import { deepMemo, memo } from "../hocs";
 import { act, fireEvent, render } from "@testing-library/react";
 import React, {
   ComponentProps,

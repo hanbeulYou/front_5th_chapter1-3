@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { generateItems } from "./utils";
-import { useCallback, useMemo } from "./@lib";
+import { useCallback, useMemo } from "./hooks";
 import { User, Notification } from "./types";
 import { ThemeContext, UserContext, NotificationContext } from "./context";
 import {

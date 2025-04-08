@@ -1,5 +1,5 @@
-import { memo } from "../@lib";
-import { useNotificationContext } from "../@lib/hooks";
+import { memo } from "../hocs";
+import { useNotificationContext } from "../context";
 import { renderLog } from "../utils";
 
 export const NotificationSystem: React.FC = memo(() => {

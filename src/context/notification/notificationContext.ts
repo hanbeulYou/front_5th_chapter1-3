@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Notification } from "../types";
+import { Notification } from "../../types";
 
 export interface NotificationContextType {
   notifications: Notification[];
