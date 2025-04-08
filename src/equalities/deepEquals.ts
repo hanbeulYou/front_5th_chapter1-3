@@ -33,5 +33,5 @@ export function deepEquals(a: unknown, b: unknown): boolean {
     return true;
   }
 
-  return false; // 원시값이 Object.is에서 걸리지 않은 경우
+  return false;
 }

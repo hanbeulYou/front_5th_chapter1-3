@@ -1,4 +1,3 @@
-// src/components/common/Button.tsx
 import React from "react";
 
 type ButtonType = "button" | "submit";
@@ -19,7 +18,6 @@ export const Button: React.FC<ButtonProps> = ({
   color = "blue",
   className = "",
 }) => {
-  // 색상 클래스 매핑
   const colorClasses = {
     blue: "bg-blue-500 hover:bg-blue-700",
     green: "bg-green-500 hover:bg-green-700",
