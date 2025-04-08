@@ -1,4 +1,9 @@
-import { useThemeState, useThemeAction, useUserContext } from "../context";
+import {
+  useThemeState,
+  useThemeAction,
+  useUserState,
+  useUserActions,
+} from "../context";
 import { memo } from "../hocs";
 import { renderLog } from "../utils";
 
@@ -6,7 +11,8 @@ export const Header: React.FC = memo(() => {
   renderLog("Header rendered");
   const theme = useThemeState();
   const toggleTheme = useThemeAction();
-  const { user, login, logout } = useUserContext();
+  const user = useUserState();
+  const { login, logout } = useUserActions();
 
   const handleLogin = () => {
     // 실제 애플리케이션에서는 사용자 입력을 받아야 합니다.
