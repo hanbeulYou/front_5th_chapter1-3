@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react-swc";
 export default mergeConfig(
   defineConfig({
     plugins: [react()],
+    base: "/front_5th_chapter1-3/",
   }),
   defineTestConfig({
     test: {
@@ -16,5 +17,5 @@ export default mergeConfig(
         reporter: ["lcov", "json", "json-summary"],
       },
     },
-  }),
+  })
 );
